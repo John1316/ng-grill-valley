@@ -1,0 +1,184 @@
+        <!-- breadcrumb start -->
+        <section class="about-breadcrumb">
+          <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+              <div class="container">
+                  <div class="row">
+                      <div class="col">
+                          <div class="about-l">
+                              <ul class="about-link">
+                                  <li class="go-home"><a routerLink="/home">Home</a></li>
+                                  <li class="about-p"><span>Menu</span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- breadcrumb end -->
+      <div *ngIf="loading" class="product_loader">
+        <div class="lds-hourglass"></div>
+      </div>
+      <!-- grid-list start -->
+      <section class="products section-tb-padding">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-3 col-md-4 col-12">
+                      <div class="all-filter">
+                          <div class="categories-page-filter">
+                              <h4 class="filter-title">Categories</h4>
+                              <a href="#category-filter" data-bs-toggle="collapse" class="filter-link"><span>Categories </span><i class="fa fa-angle-down"></i></a>
+                              <ul class="all-option collapse" id="category-filter">
+                                  <li *ngFor="let category of CategoriesContainer" class="grid-list-option">
+                                      <input type="radio" name="category" id="category{{category.id}}">
+                                      <a href="javascript:void(0)" ><label for="category{{category.id}}">{{category.en_name}}</label></a>
+                                  </li>
+                              </ul>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div class="col-lg-9 col-md-8 col-12">
+
+                      <div class="grid-list-area">
+                          <div class="grid-list-select border-bottom pb-3">
+                              <h4>Menu</h4>
+                              <input type="text" class="form-control w-200" placeholder="Search ..." [(ngModel)]="term">
+                              <ul class="grid-list-selector">
+                                  <li>
+                                      <select>
+                                          <option>Featured</option>
+                                          <option>Best selling</option>
+                                          <option>Alphabetically,A-Z</option>
+                                          <option>Alphabetically,Z-A</option>
+                                          <option>Price, low to high</option>
+                                          <option>Price, high to low</option>
+                                          <option>Date new to old</option>
+                                          <option>Date old to new</option>
+                                      </select>
+                                  </li>
+                              </ul>
+                          </div>
+                          <form  [formGroup]="addToCartForm" (ngSubmit)="ngSubmitAddToCart(addToCartForm)">
+
+                            <div class="list-product">
+                              <div class="row">
+                                <div class="col-lg-6" *ngFor="let menu of menuContainer|paginate: { itemsPerPage: 6, currentPage: page }|search:term">
+
+                                  <div class="list-items " >
+                                      <div class="tred-pro">
+                                          <div class="tr-pro-img">
+                                              <a>
+                                                  <img class="w-100 h-250" [src]="imagePerfix+menu.image" alt="{{menu.en_name}}">
+                                                  <img class="w-100 h-250 additional-image" [src]="imagePerfix+menu.image" alt="additional image">
+                                              </a>
+                                          </div>
+                                          <div class="Pro-lable">
+                                              <span class="p-text">New</span>
+                                          </div>
+                                      </div>
+                                      <div class="caption">
+                                          <h3>{{menu.en_name}}</h3>
+                                          <p class="list-description">{{menu.en_text}}</p>
+
+                                          <div class="pro-price">
+                                              <span class="new-price">{{menu.price_after_discount}} LE</span>
+                                          </div>
+                                          <div class="qty-item">
+                                            <div class="center">
+                                                <div class="plus-minus">
+                                                    <span>
+                                                        <a href="javascript:void(0)" class="minus-btn text-black">-</a>
+                                                        <input type="text" name="name" min="1" value="1">
+                                                        <a href="javascript:void(0)" class="plus-btn text-black">+</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="text" name="productId" formControlName='productId' value="{{ menu.id }}" id="productId">
+                                        <input type="hidden" name="userId" formControlName='userId' id="userId" >
+                                          <div class="pro-icn">
+
+                                              <button [disabled]="addToCartForm.invalid" type="submit" class="w-c-q-icn"><i class="fa fa-shopping-bag"></i></button>
+                                              <a routerLink="item-details"  class="w-c-q-icn" ><i class="fa fa-eye"></i></a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <pagination-controls [maxSize]="4" (pageChange)="page = $event"></pagination-controls>
+
+          </div>
+      </section>
+      <!-- grid-list start -->
+
+            <!-- <section class="quick-view">
+              <div class="modal fade"  *ngFor="let menu of menuContainer"  id="menuModal{{menu.id}}" tabindex="-1" aria-labelledby="quickView" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="quickView">{{ menu.en_name}}</h5>
+                        <a href="javascript:void(0)" data-bs-dismiss="modal" aria-label="Close"><i class="ion-close-round"></i></a>
+                    </div>
+                    <form  [formGroup]="addToCartForm" (ngSubmit)="ngSubmitAddToCart(addToCartForm)">
+                      <div class="quick-veiw-area row align-items-center">
+                        <div class="quick-image">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="image-1">
+                                    <a href="javascript:void(0)" class="long-img w-100">
+                                        <img [src]="imagePerfix+menu.image" class="w-100" alt="image">
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="quick-caption">
+                            <h4>Meat Kebab
+                            </h4>
+                            <div class="quick-price">
+                                <span class="new-price">{{menu.price_after_discount}} LE</span>
+                                <span class="old-price" *ngIf="menu.price_before_discount == null"><del>{{menu.price_before_discount}} LE</del></span>
+                            </div>
+
+                            <div class="pro-description">
+                                <p>{{menu.en_text}}
+                                </p>
+                            </div>
+
+
+                            <div class="pro-qty">
+                                <span class="qty">Quantity:</span>
+                                <div class="plus-minus mt-0">
+                                    <span>
+                                        <a href="javascript:void(0)" class="minus-btn text-black">-</a>
+                                        <input type="text" name="quantity" id="quantity" formControlName='quantity'>
+                                        <a href="javascript:void(0)" class="plus-btn text-black">+</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <input type="text" name="productId" formControlName='productId' value="1" id="productId">
+                            <input type="hidden" name="userId" formControlName='userId' id="userId" >
+                            <div class="pro-btn">
+                              <button  type="submit" class="btn btn-style1 addToCartIcon">
+                                  <span>
+                                      <i class="fa fa-shopping-bag"></i> Add to cart
+                                  </span>
+                              </button>
+                            </div>
+
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </section> -->
+          <!-- quick veiw end -->

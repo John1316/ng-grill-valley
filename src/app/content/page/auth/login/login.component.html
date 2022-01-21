@@ -1,0 +1,72 @@
+    <!-- breadcrumb start -->
+    <section class="about-breadcrumb">
+      <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+          <div class="container">
+              <div class="row">
+                  <div class="col">
+                      <div class="about-l">
+                          <ul class="about-link">
+                              <li class="go-home"><a routerLink="/home">Home</a></li>
+                              <li class="about-p"><span>Login</span></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- breadcrumb end -->
+  <!-- loader -->
+<div *ngIf="loading" class="product_loader">
+  <div class="lds-hourglass"></div>
+</div>
+  <!-- login start -->
+  <section class="section-tb-padding">
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                  <div class="login-area">
+                      <div class="login-box">
+                          <h1>Login</h1>
+                          <p>Please login below account detail</p>
+                          <div *ngIf="error" class="alert alert-danger" role="alert">
+                            {{ error }}
+                          </div>
+                          <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="SubmitLoginForm(loginForm)">
+                              <div class="form-group form-control-validation  col-lg-12">
+
+                                  <input type="email" id="email" formControlName='email' name="email" placeholder="Email">
+                                  <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                    <p class="mb-0" *ngIf="loginForm.controls.email.errors.required">email is required</p>
+                                    <p class="mb-0" *ngIf="loginForm.controls.email.errors.email">email must be valid</p>
+                                  </div>
+                              </div>
+                              <div class="form-group form-control-validation  col-lg-12">
+
+                                  <input type="password" min="1" formControlName='password' name="password" id="password" placeholder="Password">
+                                  <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                    <p class="mb-0" *ngIf="loginForm.controls.password.errors.required">password is required</p>
+                                    <p class="mb-0" *ngIf="loginForm.controls.password.errors.minlength">password must be greater than 9 character</p>
+                                </div>
+                              </div>
+                              <button [disabled]="loginForm.invalid" type="submit" class="btn w-100 btn-style1">
+                                  <span>
+                                      Sign in
+                                  </span>
+                              </button>
+                          </form>
+                      </div>
+                      <div class="login-account">
+                          <h4>Don't have an account?</h4>
+                          <a routerLink="/register" class="ceate-a">Create account</a>
+                          <div class="login-info">
+                              <a href="terms-conditions.html" class="terms-link"><span>*</span> Terms & conditions.</a>
+                              <p>Your privacy and security are important to us. For more information on how we use your data read our <a href="privacy-policy.html">privacy policy</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- login end -->

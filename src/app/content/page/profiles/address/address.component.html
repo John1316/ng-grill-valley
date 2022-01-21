@@ -1,0 +1,98 @@
+        <!-- breadcrumb start -->
+        <section class="about-breadcrumb">
+          <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+              <div class="container">
+                  <div class="row">
+                      <div class="col">
+                          <div class="about-l">
+                              <ul class="about-link">
+                                  <li class="go-home"><a routerLink="/home">Home</a></li>
+                                  <li class="about-p"><span>Address</span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- breadcrumb end -->
+      <div *ngIf="loading" class="product_loader">
+        <div class="lds-hourglass"></div>
+      </div>
+
+  <!--section start-->
+  <section class="address_area section-tb-padding">
+
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-md-9">
+                <h3 class="mb-3 text-center">Choose Your Delivery Address:</h3>
+                          <form action="" method="post" [formGroup]="addressForm" (ngSubmit)="onSubmit(addressForm)">
+                              <div class="card shadow-4 mb-4 border-0">
+                                  <div class="card-body">
+                                      <div class="row">
+                                          <div class="col-md-4">
+
+                                              <div class="form-check address-erea">
+                                                  <input class="form-check-input" type="radio" name="address_check" formControlName='address_check' id="prevAddressbtn1"
+                                                       value="option1" required>
+                                                  <label class="form-check-label" for="prevAddressbtn1">
+                                                      <h5>Mohandseen</h5>
+                                                      <span>10 Aswan Square, No.501, floor 4, flat 403</span>
+                                                  </label>
+                                              </div>
+
+                                          </div>
+                                          <div class="col-md-4">
+
+                                              <div class="form-check address-erea">
+                                                  <input class="form-check-input" type="radio" name="address_check" formControlName='address_check' id="prevAddressbtn2"
+                                                       value="option2" required>
+                                                  <label class="form-check-label" for="prevAddressbtn2">
+                                                      <h5>Dokki</h5>
+                                                      <span>15 Soliman Gohar St., floor 3, flat 6</span>
+                                                  </label>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+
+                                              <div class="form-check address-erea">
+                                                  <input class="form-check-input" type="radio" name="address_check" formControlName='address_check'  id="prevAddressbtn3"
+                                                       value="option3" required>
+                                                  <label class="form-check-label" for="prevAddressbtn3">
+                                                      <h5>Zamalek</h5>
+                                                      <span>15 Barzil Gohar St., floor 3, flat 6</span>
+                                                  </label>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <button [disabled]="addressForm.invalid"  type="submit" class="btn btn-style1 mt-0 mb-3 w-100">
+                                      <span>
+                                      Proceed Checkout
+                                      </span>
+
+                                  </button>
+
+                                </div>
+                                <div class="col-md-6">
+                                  <a routerLink="/new-address" class="btn btn-style1 mt-0 mb-3 w-100">
+                                    <span>
+                                    Add new address
+                                    </span>
+
+                                </a>
+                                </div>
+                              </div>
+                          </form>
+
+              </div>
+          </div>
+
+      </div>
+  </section>
+  <!--Section ends-->

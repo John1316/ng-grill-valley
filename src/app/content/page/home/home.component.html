@@ -1,0 +1,391 @@
+<!--home page slider start-->
+<section class="home-slider-6">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="slider-banner">
+          <div class="home-slider-main wow animated slideInLeft">
+            <owl-carousel-o [options]="mainSlider">
+              <ng-template carouselSlide class="items" *ngFor="let slider of sliders">
+                <div class="img-back" style="background-image: url(https://digitalbondmena.com/EatsCrispy/sliders/{{slider.image}});
+                                        height: 466px;
+                                        background-position: center;
+                                        background-repeat: no-repeat;
+                                        background-size: cover;">
+                  <div class="h-s-content">
+                    <div class="row">
+                      <div class="col-6">
+
+                        <h1 class="text-white">{{slider.en_title}}</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+            </owl-carousel-o>
+          </div>
+          <div class="top-banner ">
+            <div class="right-banner wow animated slideInRight">
+              <a href="grid-list.html" class="r-banner">
+                <img src="assets/image/Grill_Valley/Home/Slider_section/Side/2.jpg" class="img-fluid"
+                  alt="banner-image">
+              </a>
+              <div class="banner-r-content1">
+                <div class="row">
+                  <div class="col-6">
+
+                    <h2 class="text-white">Experience the grilled meat
+                    </h2>
+                  </div>
+                </div>
+                <a href="menu.html" class="banner-shop1 text-white">View Menu <i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+            <div class="right-banner wow animated slideInRight">
+              <a href="grid-list.html" class="r-banner">
+                <img src="assets/image/Grill_Valley/Home/Slider_section/Side/1.jpg" class="img-fluid"
+                  alt="banner-image">
+              </a>
+              <div class="banner-r-content2">
+                <div class="row">
+                  <div class="col-6">
+
+                    <h2 class="text-white">Grilled chicken is my choice
+                    </h2>
+                  </div>
+                </div>
+                <a href="menu.html" class="banner-shop2 text-white">View Menu <i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--home page slider end-->
+<!-- loader -->
+<div *ngIf="loading" class="product_loader">
+  <div class="lds-hourglass"></div>
+</div>
+<!-- products tab start -->
+<section class="section-tb-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="pro-tab6">
+          <div class="row justify-content-center">
+            <div class="col-md-8 text-center mb-4">
+
+              <div class="section-title3">
+                <h2><span>Our Menu</span></h2>
+                <p>Hanging out at Grill Valley with friends and loved ones has always been one of the
+                  best experiences ever, with delicious food, friendly service and some nice ambience.
+                  You always feel happy and comfortable!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="home6-tab swiper-container">
+            <owl-carousel-o [options]="productsSlider" class="swiper-wrapper">
+              <ng-template carouselSlide class="swiper-slide" *ngFor="let menuItem of menus">
+                <div class="tab-product">
+                  <div class="tred-pro">
+                    <div class="tr-pro-img">
+                      <a href="product_details.html">
+                        <img [src]="imagePrefixMenu+menuItem.image" alt="pro-img1" class="img-fluid">
+                        <img [src]="imagePrefixMenu+menuItem.image" alt="additional image"
+                          class="img-fluid additional-image">
+                      </a>
+                    </div>
+                    <div class="Pro-lable">
+                      <span class="p-text">New</span>
+                    </div>
+                    <div class="pro-icn">
+                      <a href="javascript:void(0)" class="w-c-q-icn" data-bs-toggle="modal"
+                        [attr.data-bs-target]="['#menuView']+menuItem.id"><i class="fa fa-eye"></i></a>
+                    </div>
+                  </div>
+                  <div class="tab-caption">
+                    <h3><a href="product_details.html">{{menuItem.en_name}}
+                      </a></h3>
+
+                    <div class="pro-price">
+                      <span class="new-price">{{menuItem.price_after_discount}} LE
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+            </owl-carousel-o>
+          </div>
+        </div>
+        <!-- teb product end -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- product tab end -->
+
+<!-- full banner -->
+<section class="banner home-banner-news section-tb-120px"
+  style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/Home/About/About.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="b-news ">
+          <div class="full-banner w-100">
+
+            <div class="banner-content">
+              <span class="b-slogan wow animated slideInLeft">You sure know what to expect from Grill
+                Valley
+              </span>
+              <h1 class="wow animated slideInRight ">Are you more into Meat or Chicken?</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- full banner and news end -->
+
+<!-- featured products start -->
+<section class="featured-product-6 section-tb-padding">
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <div class="section-title3">
+                  <h2><span>Latest Products</span></h2>
+              </div>
+              <div class="home6-tab swiper-container">
+                  <owl-carousel-o [options]="productsSlider">
+                      <ng-template carouselSlide class="swiper-slide" *ngFor="let menuItem of menus.reverse()|slice:0:5" class="swiper-slide">
+                        <div class="tab-product">
+                            <div class="tred-pro">
+                                <div class="tr-pro-img">
+                                    <a href="product_details.html">
+                                        <img [src]="imagePrefixMenu+menuItem.image" alt="pro-img1" class="img-fluid">
+                                        <img [src]="imagePrefixMenu+menuItem.image" alt="additional image" class="img-fluid additional-image">
+                                    </a>
+                                </div>
+                                <div class="Pro-lable">
+                                    <span class="p-text">New</span>
+                                </div>
+                                <div class="pro-icn">
+
+                                    <a href="javascript:void(0)"  class="w-c-q-icn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="tab-caption">
+                                <h3><a href="product_details.html">{{menuItem.en_name}}
+                                </a></h3>
+
+                                <div class="pro-price">
+                                    <span class="new-price">{{menuItem.price_after_discount}} LE
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                      </ng-template>
+
+
+                  </owl-carousel-o>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- featured products end -->
+
+<!-- full banner -->
+<section class="banner home-banner-news section-tb-120px"
+  style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/Home/About/About.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="b-news ">
+          <div class="full-banner w-100">
+
+            <div class="banner-content">
+              <span class="b-slogan wow animated slideInLeft">Colorful, juicy and delicious
+              </span>
+              <h1 class="wow animated slideInRight">Our food always gives positive energy and great vibes
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- full banner and news end -->
+
+<!-- about start -->
+<section class="about-section service-section section-tb-padding">
+  <div class="container">
+    <div class="col">
+      <div class="row">
+        <div class="service">
+          <div class="service-box col-md-4 wow animated slideInLeft">
+            <div class="s-box">
+              <i class="ti-crown"></i>
+
+              <div class="service-content">
+                <span>Perfect Quality
+                </span>
+                <p>The best taste you can ever find
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="service-box col-md-4 wow animated slideInUp">
+            <div class="s-box">
+              <i class="ti-check-box"></i>
+              <div class="service-content">
+                <span>Variety Items
+                </span>
+                <p>Find whatever you love with us
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="service-box col-md-4 wow animated slideInRight">
+            <div class="s-box">
+              <i class="ti-truck"></i>
+
+              <div class="service-content">
+
+                <span>Home Delivery
+                </span>
+                <p>We deliver to your doorstep
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- about end -->
+
+        <!-- testimonial start -->
+        <section class="testimonial-6 section-tb-padding bg-gray">
+          <div class="container">
+              <div class="row">
+                  <div class="col">
+                      <div class="section-title3">
+                          <h2><span>Review</span></h2>
+                      </div>
+                      <owl-carousel-o [options]="testominalsOptions" class="testi-6">
+
+                          <ng-template carouselSlide class="items">
+                              <div class="testimonial-content">
+                                  <div class="testimonial-area">
+                                      <div class="testi-name">
+                                          <span class="tsti-title">By disarak</span>
+
+                                      </div>
+                                  </div>
+                                  <p>“ I love this theme. Higly customizable, Easy to use and very flexible theme. Great support ! Excellent response times. Very professional and helpf...</p>
+                              </div>
+                          </ng-template>
+                          <ng-template carouselSlide class="items">
+                              <div class="testimonial-content">
+                                  <div class="testimonial-area">
+                                      <div class="testi-name">
+                                          <span class="tsti-title">By cremica_Foods</span>
+
+                                      </div>
+                                  </div>
+                                  <p>“ I love this theme. Higly customizable, Easy to use and very flexible theme. Great support ! Excellent response times. Very professional and helpf...</p>
+                              </div>
+                          </ng-template>
+                          <ng-template carouselSlide class="items">
+                              <div class="testimonial-content">
+                                  <div class="testimonial-area">
+                                      <div class="testi-name">
+                                          <span class="tsti-title">By sametin8</span>
+
+                                      </div>
+                                  </div>
+                                  <p>“ I love this theme. Higly customizable, Easy to use and very flexible theme. Great support ! Excellent response times. Very professional and helpf...</p>
+                              </div>
+                          </ng-template>
+                          <ng-template carouselSlide class="items">
+                              <div class="testimonial-content">
+                                  <div class="testimonial-area">
+                                      <div class="testi-name">
+                                          <span class="tsti-title">By amirzano</span>
+
+                                      </div>
+                                  </div>
+                                  <p>“ I love this theme. Higly customizable, Easy to use and very flexible theme. Great support ! Excellent response times. Very professional and helpf...</p>
+                              </div>
+                          </ng-template>
+                          <ng-template carouselSlide class="items">
+                              <div class="testimonial-content">
+                                  <div class="testimonial-area">
+                                      <div class="testi-name">
+                                          <span class="tsti-title">By nestheboza</span>
+
+                                      </div>
+                                  </div>
+                                  <p>“ I love this theme. Higly customizable, Easy to use and very flexible theme. Great support ! Excellent response times. Very professional and helpf...</p>
+                              </div>
+                          </ng-template>
+                      </owl-carousel-o>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- testimonial end -->
+
+<!-- instagram section -->
+<section class="gallery ratio_square section-tb-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-0 wow animated slideInRight">
+        <p class="text-center">Some Yummy Shots
+        </p>
+        <h2 class="title-borderless text-center mb-3">Our Gallery
+        </h2>
+        <owl-carousel-o [options]="galleryOptions">
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/1.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/2.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/3.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/4.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/5.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/6.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="gallery-box"> <img src="assets/image/Grill_Valley/Home/Gallery/7.jpg" class="bg-img" alt="img">
+            </div>
+          </ng-template>
+
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- instagram section end -->

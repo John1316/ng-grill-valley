@@ -1,0 +1,128 @@
+        <!-- breadcrumb start -->
+        <section class="about-breadcrumb">
+          <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+              <div class="container">
+                  <div class="row">
+                      <div class="col">
+                          <div class="about-l">
+                              <ul class="about-link">
+                                  <li class="go-home"><a routerLink="/home">Home</a></li>
+                                  <li class="about-p"><span>Register</span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- breadcrumb end -->
+      <!-- login start -->
+      <section class="section-tb-padding">
+          <div class="container">
+              <div class="row">
+
+                  <div class="col">
+                      <div class="register-area">
+                          <div class="register-box">
+                              <h1>Create account</h1>
+                              <p>Please register below account detail</p>
+                              <form [formGroup]="registerForm" (ngSubmit)="registerFormValidation(registerForm)" id="registerForm" action="">
+                                  <div class="row">
+                                    <div *ngIf="error" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>{{error}}</strong>
+                                    </div>
+
+
+                                      <div class="col-lg-6">
+                                          <div class="form-group form-control-validation">
+
+                                              <input type="text" id="name" formControlName='name' name="name" placeholder="Full Name">
+                                              <div *ngIf="registerValidation.name.touched && registerValidation.name.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                <p class="mb-0" *ngIf="registerValidation.name.errors.required">Full name is required</p>
+                                                <p class="mb-0" *ngIf="registerValidation.name.errors.minlength">Full name must 4 charachters</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                          <div class="form-group form-control-validation">
+
+                                              <input type="email" id="email" formControlName='email' name="email" placeholder="Email">
+                                              <div *ngIf="registerValidation.email.touched && registerValidation.email.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                <p class="mb-0" *ngIf="registerValidation.email.errors.required">Email is required</p>
+                                                <p class="mb-0" *ngIf="registerValidation.email.errors.email">Email must be valid</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                          <div class="form-group form-control-validation">
+
+                                              <input type="number" id="phone" formControlName='phone' name="phone" placeholder="Phone">
+                                              <div *ngIf="registerValidation.phone.touched && registerValidation.phone.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                <p class="mb-0" *ngIf="registerValidation.phone.errors.required">Phone is required</p>
+                                                <!-- <p class="mb-0" *ngIf="registerValidation.phone.errors.pattern">Phone must be 11 digits</p> -->
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                          <div class="form-group form-control-validation">
+
+                                              <input type="text" id="address" formControlName='address' name="address" placeholder="Address">
+                                              <div *ngIf="registerValidation.address.touched && registerValidation.address.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                <p class="mb-0" *ngIf="registerValidation.address.errors.required">Address is required</p>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group form-control-validation">
+                                          <select name="location_id" formControlName='location_id' class="form-control" id="location_id">
+                                              <option value="">Select a location</option>
+                                              <option *ngFor="let location of locationContainer" value="{{location.id}}">{{location.en_location}}</option>
+                                          </select>
+
+                                          <div *ngIf="registerValidation.location_id.touched && registerValidation.location_id.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                            <p class="mb-0" *ngIf="registerValidation.location_id.errors.required">Location is required</p>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                          <div class="form-group form-control-validation">
+
+                                              <input type="password" id="password" name="password" formControlName='password' placeholder="Password">
+                                              <div *ngIf="registerValidation.password.touched && registerValidation.password.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                <p class="mb-0" *ngIf="registerValidation.password.errors.required">Password is required</p>
+                                                <p class="mb-0" *ngIf="registerValidation.password.errors.minlength">Password must be greater than 8 characters</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-group">
+                                          <input formControlName="confirm_password" id="confirm_password" type="password" class="form-control" placeholder="Confirm password">
+                                          <div *ngIf="registerValidation.confirm_password.touched && registerValidation.confirm_password.errors != null" class="alert alert-danger">
+                                              <div *ngIf="registerValidation.confirm_password.errors.required">Password is required.</div>
+                                              <div *ngIf="registerValidation.confirm_password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                                          </div>
+                                      </div>
+                                      </div>
+                                      <div class="col-12 ">
+                                          <div class="row justify-content-center">
+                                              <div class="col-lg-5 ">
+                                                  <button [disabled]="registerForm.invalid" type="submit" class="btn btn-style1 w-100">
+                                                      <span>
+                                                          Create Account
+                                                      </span>
+                                                  </button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- login end -->

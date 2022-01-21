@@ -1,0 +1,109 @@
+        <!-- breadcrumb start -->
+        <section class="about-breadcrumb">
+          <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+              <div class="container">
+                  <div class="row">
+                      <div class="col">
+                          <div class="about-l">
+                              <ul class="about-link">
+                                  <li class="go-home"><a routerLink="/home">Home</a></li>
+                                  <li class="about-p"><span>New Pickup</span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- breadcrumb end -->
+
+        <!--section start-->
+  <section class="address_area section-tb-padding">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+              <div class="form-group">
+
+
+
+
+
+
+                <form id="addAddressForm" [formGroup]="newpickupAddressForm" (ngSubmit)="registerFormValidation(newpickupAddressForm)" method="get" action="">
+                    <div class="address-box">
+                        <div class="row">
+                          <div class="col-lg-9">
+                            <div class="row">
+
+                              <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="location">Location</label>
+                                    <input type="number" placeholder="Location"
+                                        class="form-control" id="location" name="location" formControlName="location">
+                                    <div *ngIf="newpickupAddressValidation.location.touched && newpickupAddressValidation.location.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newpickupAddressValidation.location.errors.required">building Number is required</p>
+                                    </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="mobile">Mobile</label>
+                                    <input type="number" placeholder="Mobile"
+                                        class="form-control" id="mobile" name="mobile" formControlName="mobile">
+                                    <div *ngIf="newpickupAddressValidation.mobile.touched && newpickupAddressValidation.mobile.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newpickupAddressValidation.mobile.errors.required">building Number is required</p>
+                                    </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="home_address">Home Address</label>
+                                    <input type="number" placeholder="Home Address"
+                                        class="form-control" id="home_address" name="home_address" formControlName="home_address">
+                                    <div *ngIf="newpickupAddressValidation.home_address.touched && newpickupAddressValidation.home_address.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newpickupAddressValidation.home_address.errors.required">building Number is required</p>
+                                    </div>
+
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="pickuptime">Pickup time</label>
+                                    <select class="select_option form-control" name="pickuptime" id="pickuptime" formControlName="pickuptime">
+                                      <option value="">Choose Time</option>
+                                        <option value="30">30 Minutes</option>
+                                        <option value="60">60 Minutes</option>
+                                        <option value="90">90 Minutes</option>
+                                        <option value="120">120 Minutes</option>
+                                        <option value="180">180 Minutes</option>
+                                    </select>
+                                    <div *ngIf="newpickupAddressValidation.pickuptime.touched && newpickupAddressValidation.pickuptime.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newpickupAddressValidation.pickuptime.errors.required">building Number is required</p>
+                                    </div>
+
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button [disabled]="newpickupAddressForm.invalid" type="submit" class="btn btn-style1">
+                            <span>
+                                Save Address
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+
+              </div>
+            </div>
+        </div>
+    </div>

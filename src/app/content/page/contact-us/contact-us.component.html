@@ -1,0 +1,139 @@
+        <!-- breadcrumb start -->
+        <section class="about-breadcrumb">
+          <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+              <div class="container">
+                  <div class="row">
+                      <div class="col">
+                          <div class="about-l">
+                              <ul class="about-link">
+                                  <li class="go-home"><a routerLink="/home">Home</a></li>
+                                  <li class="about-p"><span>Contact</span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- breadcrumb end -->
+      <!-- map area start -->
+      <section class="contact section-tb-padding">
+          <div class="container">
+              <div class="row">
+                  <div class="col">
+                      <div class="map-area">
+                          <div class="map-title">
+                              <h1>Contact us</h1>
+                          </div>
+
+                          <div class="map-details section-t-padding">
+                              <div class="contact-info">
+                                  <div class="contact-details">
+                                      <h4>Drop us message</h4>
+                                      <form [formGroup]="contactForm" (ngSubmit)="contactFormSubmit(contactForm)">
+                                          <div class="row">
+                                              <div class="col-12">
+
+                                                  <div class="form-group form-control-validation">
+                                                      <label for="full_name">Full Name</label>
+                                                      <input type="text" formControlName='full_name' class="form-control" id="full_name" placeholder="Enter Your name">
+                                                      <div *ngIf="contactForm.controls.full_name.touched && contactForm.controls.full_name.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                        <p class="mb-0" *ngIf="contactForm.controls.full_name.errors.required">Full name is required</p>
+                                                        <p class="mb-0" *ngIf="contactForm.controls.full_name.errors.minlength">Full name must 4 charachters</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-12">
+
+                                                  <div class="form-group form-control-validation">
+                                                      <label for="phone">Phone number</label>
+                                                      <input type="number" formControlName='phone' class="form-control" min="1" id="phone" placeholder="Enter your number">
+                                                      <div *ngIf="contactForm.controls.phone.touched && contactForm.controls.phone.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                        <p class="mb-0" *ngIf="contactForm.controls.phone.errors.required">Phone is required</p>
+                                                      </div>
+                                                      <small></small>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12">
+
+                                                  <div class="form-group form-control-validation">
+                                                      <label for="email">Email</label>
+                                                      <input type="email" formControlName='email' class="form-control" id="email" placeholder="Enter your Email" >
+                                                      <div *ngIf="contactForm.controls.email.touched && contactForm.controls.email.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                        <p class="mb-0" *ngIf="contactForm.controls.email.errors.required">Email is required</p>
+                                                        <p class="mb-0" *ngIf="contactForm.controls.email.errors.email">Email must be valid</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12">
+
+                                                  <div class="form-group form-control-validation">
+                                                      <label for="subject">subject</label>
+                                                      <input type="text" class="form-control" formControlName='subject' id="subject" placeholder="Enter your Subject" >
+                                                      <div *ngIf="contactForm.controls.subject.touched && contactForm.controls.subject.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                        <p class="mb-0" *ngIf="contactForm.controls.subject.errors.required">Subject is required</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12">
+
+                                                  <div class="form-group form-control-validation">
+                                                      <label for="message">Write Your Message</label>
+                                                      <textarea class="form-control" formControlName='message' placeholder="Enter Your Message" id="message" rows="6"></textarea>
+                                                      <div *ngIf="contactForm.controls.message.touched && contactForm.controls.message.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                                        <p class="mb-0" *ngIf="contactForm.controls.message.errors.required">Message is required</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <button type="submit" [disabled]="contactForm.invalid" class="btn btn-style1"> <span>Submit <i class="ti-arrow-right"></i></span></button>
+                                      </form>
+                                  </div>
+                              </div>
+                              <div class="contact-info">
+                                  <div class="information">
+                                      <h4>Get In touch
+                                      </h4>
+                                      <p class="info-description">We’re here to help and answer any question you might have. We look forward to hearing from you!
+                                      </p>
+                                      <div class="contact-in">
+                                          <ul class="info-details">
+                                              <li><i class="fa fa-street-view"></i></li>
+                                              <li>
+                                                  <h4>Address</h4>
+                                                  <p>North Teseen Street, First New Cairo</p>
+                                                  <p>Shiekh Zayed, Giza Governorate
+                                                  </p>
+                                              </li>
+                                          </ul>
+                                          <ul class="info-details">
+                                              <li><i class="fa fa-phone"></i></li>
+                                              <li>
+                                                  <h4>Call</h4>
+                                                  <p><a href="tel:16661
+                                                      "></a>16661
+                                                  </p>
+                                              </li>
+                                          </ul>
+                                          <ul class="info-details">
+                                              <li><i class="fa fa-envelope"></i></li>
+                                              <li>
+                                                  <h4>Email</h4>
+                                                  <p><a href="mailto:MeatORChicken@grilledvalley.com
+                                                      "></a>MeatORChicken@grilledvalley.com
+                                                  </p>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="map py-4">
+                              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.2195848083406!2d31.453696114957676!3d30.03055758188727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583cd62b1e3477%3A0x61be373321ebbe38!2sN%20Teseen%20St%2C%20First%20New%20Cairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1632927035849!5m2!1sen!2seg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- map area end -->

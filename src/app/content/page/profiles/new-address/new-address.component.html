@@ -1,0 +1,264 @@
+        <!-- breadcrumb start -->
+        <section class="about-breadcrumb">
+          <div class="about-back section-tb-padding" style="background-image:linear-gradient(to right bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(assets/image/Grill_Valley/About/Banner2.jpg)">
+              <div class="container">
+                  <div class="row">
+                      <div class="col">
+                          <div class="about-l">
+                              <ul class="about-link">
+                                  <li class="go-home"><a routerLink="/home">Home</a></li>
+                                  <li class="about-p"><span>New address</span></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- breadcrumb end -->
+
+        <!--section start-->
+  <section class="address_area section-tb-padding">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+              <div class="form-group">
+
+
+
+
+
+
+                <form id="addAddressForm" [formGroup]="newDeliveryAddressForm" method="get" action="">
+                    <div class="address-box">
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="form-group form-control-validation">
+                                    <label for="location">Location</label>
+                                    <div class="select_wrap dark_slect">
+                                        <select id="location" name="location" id="location" formControlName="location" class="form-control">
+                                            <option value="">Choose Location</option>
+                                            <option value="6th of October">6th of October</option>
+                                            <option value="Agouza">Agouza</option>
+                                            <option value="Dokki">Dokki</option>
+                                            <option value="Downtown">Downtown</option>
+                                            <option value="Garden City">Garden City</option>
+                                            <option value="Haram">Haram</option>
+                                            <option value="Heliopolis">Heliopolis</option>
+                                            <option value="Maadi">Maadi</option>
+                                            <option value="Mohandseen">Mohandseen</option>
+                                            <option value="New Cairo">New Cairo</option>
+                                            <option value="Zamalek">Zamalek</option>
+                                        </select>
+                                        <div *ngIf="newAddressValidation.location.touched && newAddressValidation.location.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                          <p class="mb-0" *ngIf="newAddressValidation.location.errors.required">Location is required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-control-validation">
+                                    <label for="sub_location">Sub location</label>
+                                    <div class="select_wrap dark_slect">
+                                        <select class="form-control" name="sub_location" id="sub_location" formControlName="sub_location" id="sub_location">
+                                            <option value="">Choose location First</option>
+                                            <option value="6th of October">6th of October</option>
+                                            <option value="Agouza">Agouza</option>
+                                            <option value="Dokki">Dokki</option>
+                                            <option value="Downtown">Downtown</option>
+                                            <option value="Garden City">Garden City</option>
+                                            <option value="Haram">Haram</option>
+                                            <option value="Heliopolis">Heliopolis</option>
+                                            <option value="Maadi">Maadi</option>
+                                            <option value="Mohandseen">Mohandseen</option>
+                                            <option value="New Cairo">New Cairo</option>
+                                            <option value="Zamalek">Zamalek</option>
+                                        </select>
+
+                                    </div>
+                                    <div *ngIf="newAddressValidation.sub_location.touched && newAddressValidation.sub_location.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newAddressValidation.sub_location.errors.required">Sub location is required</p>
+                                    </div>
+                                </div>
+                                <div class="row form-control-validation">
+                                    <label for="address_type">Type of building</label>
+                                        <!-- <select class="form-control"  [(ngModel)]="optionValue" id="address_type"  formControlName='address_type' name="address_type">
+                                          <option value="">Choose building</option>
+                                          <option value="villa">Villa</option>
+                                          <option value="building">Building</option>
+                                          <option value="other">Other</option>
+                                        </select> -->
+                                        <div class="col-md-4">
+
+                                          <div class="form-check address-erea">
+                                            <input class="form-check-input" type="radio" name="address_type" formControlName="address_type"  id="villa" value="villa">
+                                            <label class="form-check-label" for="Villa">
+                                                <h5>Villa</h5>
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                          <div class="form-check address-erea">
+                                            <input class="form-check-input" type="radio" name="address_type" formControlName="address_type"  id="building" value="building">
+                                            <label class="form-check-label" for="building">
+                                              <h5>Building</h5>
+                                            </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                          <div class="form-check address-erea">
+                                            <input class="form-check-input" type="radio" name="address_type" formControlName="address_type" id="other" value="other">
+                                            <label class="form-check-label" for="other">
+                                              <h5>other</h5>
+                                            </label>
+                                          </div>
+                                        </div>
+
+                                        <div *ngIf="newAddressValidation.address_type.touched && newAddressValidation.address_type.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                          <p class="mb-0" *ngIf="newAddressValidation.address_type.errors.required">Address type is required</p>
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row" *ngIf="optionValue == 'villa'" [formGroupName]="villa">
+                            <div class="col-md-12">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="Address">Address</label>
+                                    <input placeholder="Address"  formControlName="villa_address" name="villa_address" class="form-control" id="villa_address">
+                                    <div *ngIf="newAddressValidation.villa_address.touched && newAddressValidation.villa_address.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newAddressValidation.villa_address.errors.required">villa_address type is required</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="no_of_building">Number of building</label>
+                                    <input type="number" placeholder="Number of building"
+                                        class="form-control" formControlName="villa_no_of_building" name="villa_no_of_building" id="villa_no_of_building">
+                                        <div *ngIf="newAddressValidation.villa_no_of_building.touched && newAddressValidation.villa_no_of_building.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                          <p class="mb-0" *ngIf="newAddressValidation.villa_no_of_building.errors.required">villa_no_of_building type is required</p>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="Landmark">Landmark</label>
+                                    <input placeholder="Landmark" class="form-control" id="villa_landmark">
+                                    <small>Error message</small>
+
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row" >
+                            <div class="col-md-12">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="Address">Address</label>
+                                    <input placeholder="Address" class="form-control" name="address" formControlName="address" id="address">
+                                    <div *ngIf="newAddressValidation.address.touched && newAddressValidation.address.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                      <p class="mb-0" *ngIf="newAddressValidation.address.errors.required">building_address is required</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="buildingNumber">Number of building</label>
+                                    <input type="number" placeholder="Number of building"
+                                        class="form-control" id="buildingNumber" name="buildingNumber" formControlName="buildingNumber">
+                                        <div *ngIf="newAddressValidation.buildingNumber.touched && newAddressValidation.buildingNumber.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                          <p class="mb-0" *ngIf="newAddressValidation.buildingNumber.errors.required">building Number is required</p>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="apartmentNumber">Number of apartment</label>
+                                    <input type="number" placeholder="Number of apartment"
+                                        class="form-control" id="apartmentNumber" name="apartmentNumber" formControlName="apartmentNumber">
+                                        <div *ngIf="newAddressValidation.apartmentNumber.touched && newAddressValidation.apartmentNumber.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                          <p class="mb-0" *ngIf="newAddressValidation.apartmentNumber.errors.required">apartmentNumber is required</p>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="no_of_apartment">Number of Floor</label>
+                                    <input type="number" placeholder="Number of apartment"
+                                        class="form-control" formControlName="floorNumber" name="floorNumber" id="floorNumber">
+                                        <div *ngIf="newAddressValidation.floorNumber.touched && newAddressValidation.floorNumber.errors != null" class="alert mt-2 alert-danger text-left" role="alert">
+                                          <p class="mb-0" *ngIf="newAddressValidation.floorNumber.errors.required">floorNumber is required</p>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="Landmark">Landmark</label>
+                                    <input placeholder="Landmark" class="form-control"
+                                        id="building_landmark">
+                                    <small>Error message</small>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row" *ngIf="optionValue == 'other'">
+                            <div class="col-md-12">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="Address">Address</label>
+                                    <input placeholder="Address" class="form-control" id="other_address">
+                                    <small>Error message</small>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group form-control-validation">
+
+                                    <label for="Landmark">Landmark</label>
+                                    <input placeholder="Landmark" class="form-control" id="other_landmark">
+                                    <small>Error message</small>
+
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                          <div class="col-lg-4">
+
+                            <button [disabled]="newDeliveryAddressForm.invalid" type="submit" class="btn w-100 btn-style1">
+                                <span>
+                                    Save Address
+                                </span>
+                            </button>
+                          </div>
+                          <div class="col-lg-4">
+                            <a routerLink="/new-pickup" type="submit" class="btn w-100 btn-style1">
+                              <span>
+                                  Pickup
+                              </span>
+                          </a>
+                          </div>
+                        </div>
+
+                    </div>
+                </form>
+
+
+              </div>
+            </div>
+        </div>
+    </div>
